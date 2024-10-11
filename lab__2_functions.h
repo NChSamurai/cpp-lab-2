@@ -102,6 +102,10 @@ void list_splice(int x, int y)
 void list_del_zero(list<int> L)
 {
     auto iterL1 = find(L.begin(),L.end(),0);
+    for (auto i = L.begin(); i != L.end(); ++i) {
+        cout <<*i << " ";
+    }
+    cout<<"\n";
     if(*iterL1 == 0)
         L.erase(iterL1);
     for (auto i = L.begin(); i != L.end(); ++i) {
@@ -132,10 +136,10 @@ bool is_zero(int x){
 void dec_cut(deque<int> D)
 {
     const int xsize = D.size()/2;
-    deque<int> D0(xsize - 1);
+    deque<int> D0(xsize );
     replace_copy_if(D.begin(),D.end(),D0.begin(),is_zero,0);
     auto iterD0 = D0.end();
-    for(int i = xsize;i != 0;i--){
+    for(int i = xsize;i != -1;i--){
         D.push_back(*iterD0);
         --iterD0;
     }
